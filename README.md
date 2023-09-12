@@ -28,7 +28,7 @@ This is a simple URL shortener web application built with Flask, a Python web fr
 1. Run the Flask application:
 
    ```
-   python app.py
+   python urlshrt.py
    ```
 
 2. Open your web browser and navigate to `http://localhost:5000` to access the URL shortener web interface.
