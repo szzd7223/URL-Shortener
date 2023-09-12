@@ -12,10 +12,15 @@ def generate_short_url(length=6):
     return short_url
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET","POST"])
 def index():
     if request.method == "POST":
         long_url = request.form['long_url']
+
+        if len(long_url)<=0:
+            return render_template("landing.html", alert="Empty URL! Please Enter a Valid URL!")
+        
+
         short_url = generate_short_url()
         while short_url in shortened_urls:
             short_url = generate_short_url()
@@ -23,7 +28,7 @@ def index():
         shortened_urls[short_url] = long_url
         with open('urls.json', 'w') as json_file:
             json.dump(shortened_urls, json_file)
-            
+
         return render_template("landing.html", shorturl=short_url, baseurl=f"{request.url_root}")
     
     return render_template("landing.html")

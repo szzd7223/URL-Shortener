@@ -27,6 +27,13 @@
     </div>
 
     <div>
+
+        {% if alert %}
+        <div class="lg-4 mb-4 m-4 alert alert-info" role="alert">
+            <p>{{ alert }}</p>
+        </div>
+        {% endif %}
+
         {% if shorturl %}
         <div class="lg-4 mb-4 m-4 alert alert-info" role="alert">
             <p>Shortened URL: <a href="{{ shorturl }}">{{ baseurl }}/{{ shorturl }}</a></p>
